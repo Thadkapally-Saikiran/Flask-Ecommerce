@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+<!-- This template extends base.html to reuse its layout and structure -->
+
+{% block head %}
+    <!-- Override the head block to include checkout-specific CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="checkout-container">
+    <!-- Page Title -->
+    <h2>Checkout</h2>
+    <!-- Display product name and price passed from the Flask route -->
+    <h3>Buying: {{ product['name'] }}</h3>
+    <h3>Price: ${{ product['price'] }}</h3>
+    
+    <!-- Checkout form for collecting shipping details -->
+    <form method="POST" class="checkout-form">
+        <!-- Address Field -->
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" placeholder="Street, Apartment, etc." required>
+        
+        <!-- City Field -->
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+        
+        <!-- State Field -->
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required>
+        
+        <!-- PIN Code Field -->
+        <label for="pin">PIN Code:</label>
+        <input type="text" id="pin" name="pin" required>
+        
+        <!-- Submit Button to proceed with the order -->
+        <button type="submit" class="btn">Proceed to Order</button>
+    </form>
+</div>
+{% endblock %}
