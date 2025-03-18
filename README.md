@@ -1,5 +1,7 @@
 # Flask_Ecommerce 🚀
 
+![](ecommerce.png)
+
 A modern e-commerce web application built with Flask, showcasing essential web development skills using Python, HTML, CSS,JavaScript and MySQL.
 
 ---
