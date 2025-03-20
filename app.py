@@ -20,11 +20,11 @@ import bcrypt
 # Initialize the Flask application
 app = Flask(__name__)
 # Set the secret key for session management and security (used for signing cookies and tokens)
-app.secret_key = 'simplelogin'
+app.secret_key = os.environ.get("SECRET_KEY", "simplelogin")
 
 # Razorpay configuration: API key and secret for integrating Razorpay payment gateway
-RAZORPAY_KEY_ID = "rzp_test_xxfkdUYWCKHS4E"       # Replace with your actual Razorpay key ID in production
-RAZORPAY_KEY_SECRET = "DDFK36eIKqNL514rmiJ4vahF"   # Replace with your actual Razorpay key secret
+RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID","rzp_test_xxfkdUYWCKHS4E" )      # Replace with your actual Razorpay key ID in production
+RAZORPAY_KEY_SECRET = os.environ.get("RAZORPAY_KEY_SECRET","DDFK36eIKqNL514rmiJ4vahF")   # Replace with your actual Razorpay key secret
 
 # Create a Razorpay client instance using the provided API credentials
 razorpay_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
@@ -34,9 +34,9 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = 'thadkapallysaikiran2001@gmail.com'  # Sender email address
-app.config['MAIL_PASSWORD'] = 'ktvq inal srse itjg'                  # Sender email password
-app.config['MAIL_DEFAULT_SENDER'] = 'thadkapallysaikiran2001@gmail.com'
+app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME", "thadkapallysaikiran2001@gmail.com")  # Sender email address
+app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD", "ktvq inal srse itjg")                 # Sender email password
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get("MAIL_DEFAULT_SENDER", "thadkapallysaikiran2001@gmail.com")
 
 # Initialize Flask-Mail with the app configuration
 mail = Mail(app)
