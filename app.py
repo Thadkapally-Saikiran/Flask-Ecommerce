@@ -1,5 +1,5 @@
 # Import necessary functions and classes from Flask and other libraries
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, render_template, redirect, url_for, request, session, flash
 # Flask-Mail is used for sending emails from our Flask app
 from flask_mail import Mail, Message
 # itsdangerous is used to generate secure tokens for actions like password reset
