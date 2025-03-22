@@ -13,6 +13,9 @@ from datetime import datetime, timedelta
 # Razorpay is used for payment processing
 import razorpay
 # bcrypt is used for hashing passwords securely
+
+import os
+
 import bcrypt
 # (Optional) MySQL connector is commented out because we are using our own database module
 # import mysql.connector
@@ -436,8 +439,6 @@ def contact():
 
 # Run the Flask application on port 6002 in debug mode
 if __name__ == "__main__":
-    # app.run(port=6002, debug=True)
-    import os
-    port = int(os.environ.get("PORT", 6002))
-    app.run(host="0.0.0.0", port=port, debug=True)
+    app.run(port=6002, debug=True)
+    
 
